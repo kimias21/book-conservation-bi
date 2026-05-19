@@ -1,0 +1,9 @@
+site_id,site_name,site_type,country,city,latitude,longitude,climate_zone,collection_size_volumes
+S01,"Biblioteca Joanina, University of Coimbra",library,Portugal,Coimbra,40.2075,-8.4266,Mediterranean,250000
+S02,Universitätsbibliothek Heidelberg,library,Germany,Heidelberg,49.4093,8.6944,Oceanic,180000
+S03,Biblioteca comunale dell'Archiginnasio,library,Italy,Bologna,44.4929,11.343,Humid subtropical,850000
+S04,Archivio di Stato di Firenze,archive,Italy,Florence,43.7696,11.2558,Mediterranean,1200000
+S05,Bibliothèque nationale de France,library,France,Paris,48.8336,2.3758,Oceanic,40000000
+S06,British Library — St Pancras,library,United Kingdom,London,51.53,-0.1274,Oceanic,170000000
+S07,Marmottan Repository (simulated cold store),repository,France,Paris,48.8606,2.2664,Oceanic,45000
+S08,Biblioteca Medicea Laurenziana,library,Italy,Florence,43.7743,11.253,Mediterranean,110000
