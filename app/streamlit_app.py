@@ -129,8 +129,7 @@ def kpi_row(df: pd.DataFrame) -> None:
 def main_dashboard(df: pd.DataFrame, timeseries: pd.DataFrame) -> None:
     st.title("Conservation state of ancient books")
     st.caption(
-        "Business Intelligence dashboard for curators and conservators — "
-        "IS & BI course project A.Y. 2025/2026"
+        "Kimia — IS & BI 2025/2026 · Decision support for libraries and archives"
     )
     kpi_row(df)
 

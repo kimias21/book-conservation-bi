@@ -1,7 +1,10 @@
 # Analysis of the Conservation State of Ancient Books
 
 **Information Systems and Business Intelligence — A.Y. 2025/2026**  
-**Author:** *[Your name]*  
+**Author:** Kimia  
+**GitHub:** [kimias21/book-conservation-bi](https://github.com/kimias21/book-conservation-bi)  
+**Colab:** *[paste your shared notebook link]*  
+**Dashboard:** *[paste Streamlit URL after deployment]*  
 **Date:** May 2026
 
 ---
@@ -30,14 +33,16 @@ The system supports the cycle **monitor → assess → prioritise → intervene 
 4. **Intervene** — Restoration or climate remediation.
 5. **Re-monitor** — Update campaign data and refresh indicators.
 
-### 1.3 Autonomous operational choices
+### 1.3 Design decisions (my choices)
 
-| Choice | Justification |
-|--------|---------------|
-| Site-level environmental join | Monitoring is usually deployed per repository; volume-level sensors are rare in open data. |
-| CRI on 0–100 scale | Intuitive for dashboards; mappable to traffic-light risk labels. |
-| Streamlit over Power BI | Taught in course; Python single-stack with Colab; free cloud deploy. |
-| 480-volume catalogue | Large enough for stable models; small enough for oral demo drill-down. |
+| Choice | Why I did it |
+|--------|----------------|
+| Join on `site_id` | In open data, environmental loggers sit in the building, not on each volume. |
+| CRI scale 0–100 | Easy to explain to a curator and to colour on the dashboard. |
+| Streamlit | Same language as the course labs; I can deploy free on Streamlit Cloud. |
+| 480 volumes | Enough rows for stable charts; still fast for live demo in the oral exam. |
+
+**Personal note:** I started from the Coimbra historic-library paper (Ferreira et al., 2019) for realistic RH ranges, then added Italian sites (Bologna, Florence) because I wanted geographic spread for the map view.
 
 ---
 
@@ -125,10 +130,14 @@ Risk labels: Low (&lt;35), Moderate (35–55), High (55–75), Critical (≥75).
 
 ### 4.5 Results for decision-makers
 
-1. **Humidity** is the most actionable environmental lever in several sites with RH outside the optimal band.  
-2. **Parchment + iron-gall** combinations dominate high material-stress clusters.  
-3. **Age alone** does not determine priority—environmental remediation at high-RH sites can dominate.  
-4. **Flood/HVAC flags** warrant immediate site review even for moderate-CRI volumes.
+On my integrated sample (480 volumes):
+
+- Mean **CRI ≈ 39**; most volumes are **Moderate** risk, a small group **High/Critical**.
+- **Bologna (Archiginnasio)** shows higher average CRI, linked to **RH around 58–59%** in the simulated campaign — above the 45–55% band I used from UNI 10829-style guidance.
+- **Parchment and iron-gall ink** push material stress up; 19th-century industrial paper lowers material stress but not always total CRI if the room climate is poor.
+- In the random-forest run, **century, humidity, and site type** mattered more than ink type alone for the high-risk label.
+
+**For a curator:** stabilise humidity before scheduling expensive restoration on “old but stable” volumes in a bad microclimate.
 
 **Assumptions:** Stationary six-month campaign; site-average environment applied to all stacks.
 
@@ -155,7 +164,7 @@ Risk labels: Low (&lt;35), Moderate (35–55), High (55–75), Critical (≥75).
 
 ### 5.3 Deployment
 
-Deploy via Streamlit Community Cloud (`app/streamlit_app.py`, root `requirements.txt`). URL: *[insert after deployment]*.
+Deployed on Streamlit Community Cloud (`app/streamlit_app.py`). Public URL: *[paste here — e.g. https://book-conservation-bi-xxxx.streamlit.app]*.
 
 ---
 
@@ -164,8 +173,8 @@ Deploy via Streamlit Community Cloud (`app/streamlit_app.py`, root `requirements
 ### 6.1 Strengths
 
 - End-to-end reproducible pipeline.  
-- Explicit provenance and integration narrative (autonomy criterion).  
-- Decision-oriented CRI and dashboard simulations.
+- Clear data lineage and honest limits (simulated catalogue).  
+- Dashboard usable in the oral demo (filters, map, what-if).
 
 ### 6.2 Weaknesses and future work
 

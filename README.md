@@ -1,98 +1,93 @@
-# Analysis of the Conservation State of Ancient Books
+# Conservation state of ancient books — BI project
 
-**Information Systems and Business Intelligence** — A.Y. 2025/2026
+**Kimia · Information Systems and Business Intelligence · A.Y. 2025/2026**
 
-End-to-end Business Intelligence project: integrated cultural-heritage data, reproducible analysis (Colab), and an interactive Streamlit dashboard for conservators and curators.
+Repository: [github.com/kimias21/book-conservation-bi](https://github.com/kimias21/book-conservation-bi)
 
-## Project structure
+---
 
-```
-book-conservation-bi/
-├── app/streamlit_app.py          # Phase 3 — interactive dashboard
-├── data/
-│   ├── raw/                      # Source fragments + provenance
-│   └── processed/                # Integrated analytic table
-├── notebooks/
-│   └── conservation_analysis.ipynb
-├── report/
-│   └── final_report.md           # Phase 4 — export to PDF
-├── src/
-│   ├── data_integration.py       # Phase 1 — build dataset
-│   └── conservation_index.py     # CRI definition
-├── requirements.txt
-└── README.md
-```
+## What this project does
 
-## Quick start (local)
+I built a small decision-support system for libraries and archives: it links **where** books are stored, **environmental** readings (temperature, humidity, light), and **what they are made of** (parchment, paper, inks, binding) to a single **Conservation Risk Index (CRI)**. Curators can filter collections, see sites on a map, drill down to single volumes, and test “what-if” humidity changes before planning restoration.
+
+I chose this topic because open cultural-heritage data are split across catalogues and monitoring studies — no one file had everything. I integrated sources on `site_id` and documented limits in `data/raw/DATA_PROVENANCE.md`.
+
+---
+
+## Links (submission)
+
+| Deliverable | Link |
+|-------------|------|
+| GitHub | https://github.com/kimias21/book-conservation-bi |
+| Google Colab | *paste your shared notebook URL here* |
+| Streamlit dashboard | *paste your Streamlit Cloud URL after deploy* |
+| Report (PDF) | export from `report/final_report.md` |
+
+---
+
+## Run locally
 
 ```bash
+git clone https://github.com/kimias21/book-conservation-bi.git
 cd book-conservation-bi
 python3 -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
+source .venv/bin/activate
 pip install -r requirements.txt
 python -m src.data_integration
 streamlit run app/streamlit_app.py
 ```
 
-Open `http://localhost:8501`.
+Browser: `http://localhost:8501`
+
+---
 
 ## Google Colab
 
-1. Push this folder to GitHub (or zip and upload to Drive).
-2. Open `notebooks/conservation_analysis.ipynb` in [Google Colab](https://colab.research.google.com/).
-3. Clone the repo in the first cell:
+Open the notebook directly:
+
+https://colab.research.google.com/github/kimias21/book-conservation-bi/blob/main/notebooks/conservation_analysis.ipynb
+
+Or run setup in a new notebook:
 
 ```python
-!git clone https://github.com/YOUR_USER/book-conservation-bi.git
+!git clone https://github.com/kimias21/book-conservation-bi.git
 %cd book-conservation-bi
 !pip install -q -r requirements.txt
 !python -m src.data_integration
 ```
 
-4. Share the notebook link (File → Share) for submission.
+Then open `notebooks/conservation_analysis.ipynb` from the file panel → **Runtime → Run all** → **Share** the notebook.
 
-## Deploy dashboard (Streamlit Community Cloud)
+---
 
-1. Create a public GitHub repository with this folder.
-2. Go to [share.streamlit.io](https://share.streamlit.io/) → **New app**.
-3. Main file path: `app/streamlit_app.py`
-4. Working directory: repository root (where `requirements.txt` lives).
-5. Deploy and copy the public URL for your report and oral exam.
+## Deploy Streamlit (one time)
 
-**Alternative:** [Hugging Face Spaces](https://huggingface.co/spaces) with SDK **Streamlit**.
+1. Sign in at [share.streamlit.io](https://share.streamlit.io/) with GitHub account **kimias21**
+2. **New app** → repo `kimias21/book-conservation-bi`, branch `main`
+3. Main file: `app/streamlit_app.py`
+4. Copy the public URL into the table above and into your PDF report
 
-## Phase 1 — Data
+---
 
-| File | Description |
-|------|-------------|
-| `data/raw/sites.csv` | Libraries, archives, coordinates |
-| `data/raw/environmental_monitoring.csv` | Monthly T/RH/light campaign |
-| `data/raw/volumes_metadata.csv` | Volume-level catalogue |
-| `data/processed/integrated_heritage_books.csv` | Joined analytic table + CRI |
-| `data/raw/DATA_PROVENANCE.md` | Licences, limits, extensions |
+## Main files
 
-Regenerate:
+| Path | Role |
+|------|------|
+| `src/data_integration.py` | Builds integrated dataset |
+| `src/conservation_index.py` | CRI formula |
+| `data/processed/integrated_heritage_books.csv` | Main table for analysis |
+| `notebooks/conservation_analysis.ipynb` | EDA + models |
+| `app/streamlit_app.py` | Dashboard |
+| `report/final_report.md` | Written report (→ PDF) |
 
-```bash
-python -m src.data_integration --volumes 480
-```
+---
 
-## Conservation Risk Index (CRI)
+## CRI in one sentence
 
-Synthetic indicator (0–100, higher = worse) combining environmental stress (UNI 10829-inspired bands), material vulnerability, age, and exceptional events. Implemented in `src/conservation_index.py`.
+Score 0–100 (higher = worse): combines environment (UNI 10829-style RH/T bands), material sensitivity, age, and events such as floods. Details in the report and in `src/conservation_index.py`.
 
-## Submission checklist
-
-- [ ] Public GitHub repository
-- [ ] `requirements.txt` + this README
-- [ ] Shared Colab notebook link
-- [ ] Deployed Streamlit (or HF Spaces) URL
-- [ ] `report/final_report.md` exported to PDF (max 10 pages)
-
-## Oral exam tips
-
-Demonstrate: filters → map → drill-down → what-if → priority ranking. Explain why data were integrated, how CRI weights were chosen, and main limitations (synthetic catalogue, site-level environment).
+---
 
 ## Licence
 
-Code: MIT. Simulated metadata: structure aligned with open heritage catalogues; see `DATA_PROVENANCE.md`.
+Code MIT · simulated catalogue metadata documented in `DATA_PROVENANCE.md`
