@@ -8,7 +8,6 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -18,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.conservation_index import compute_cri, risk_label
+from src.conservation_index import compute_cri
 from src.config import DATA_PROCESSED, INTEGRATED_CSV
 
 st.set_page_config(

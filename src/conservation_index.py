@@ -108,6 +108,16 @@ def risk_label(cri: float) -> str:
 
 def add_conservation_columns(df: pd.DataFrame) -> pd.DataFrame:
     out = df.copy()
+    drop_cols = [
+        "environmental_stress",
+        "material_stress",
+        "age_stress",
+        "event_stress",
+        "conservation_risk_index",
+        "risk_level",
+        "high_risk",
+    ]
+    out = out.drop(columns=[c for c in drop_cols if c in out.columns])
     out["environmental_stress"] = out.apply(environmental_stress, axis=1)
     out["material_stress"] = out.apply(material_stress, axis=1)
     out["age_stress"] = out["century"].apply(age_stress)
