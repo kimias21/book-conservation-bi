@@ -3,7 +3,7 @@
 **Information Systems and Business Intelligence — A.Y. 2025/2026**  
 **Author:** Kimia  
 **GitHub:** [kimias21/book-conservation-bi](https://github.com/kimias21/book-conservation-bi)  
-**Colab:** *[paste your shared notebook link]*  
+**Colab:** https://colab.research.google.com/github/kimias21/book-conservation-bi/blob/main/notebooks/conservation_analysis.ipynb  
 **Dashboard:** *[paste Streamlit URL after deployment]*  
 **Date:** May 2026
 
@@ -33,16 +33,16 @@ The system supports the cycle **monitor → assess → prioritise → intervene 
 4. **Intervene** — Restoration or climate remediation.
 5. **Re-monitor** — Update campaign data and refresh indicators.
 
-### 1.3 Design decisions (my choices)
+### 1.3 Design decisions
 
-| Choice | Why I did it |
+| Choice | Rationale |
 |--------|----------------|
 | Join on `site_id` | In open data, environmental loggers sit in the building, not on each volume. |
 | CRI scale 0–100 | Easy to explain to a curator and to colour on the dashboard. |
 | Streamlit | Same language as the course labs; I can deploy free on Streamlit Cloud. |
-| 480 volumes | Enough rows for stable charts; still fast for live demo in the oral exam. |
+| 480 volumes | Sufficient for stable analysis and dashboard performance. |
 
-**Personal note:** I started from the Coimbra historic-library paper (Ferreira et al., 2019) for realistic RH ranges, then added Italian sites (Bologna, Florence) because I wanted geographic spread for the map view.
+Environmental ranges for site S01 (Coimbra) follow Ferreira et al. (2019). Italian sites were included to improve geographic coverage in the dashboard map.
 
 ---
 
@@ -130,7 +130,7 @@ Risk labels: Low (&lt;35), Moderate (35–55), High (55–75), Critical (≥75).
 
 ### 4.5 Results for decision-makers
 
-On my integrated sample (480 volumes):
+On the integrated sample (480 volumes):
 
 - Mean **CRI ≈ 39**; most volumes are **Moderate** risk, a small group **High/Critical**.
 - **Bologna (Archiginnasio)** shows higher average CRI, linked to **RH around 58–59%** in the simulated campaign — above the 45–55% band I used from UNI 10829-style guidance.
