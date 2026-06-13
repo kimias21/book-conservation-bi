@@ -2,7 +2,7 @@
 
 ## Objective
 
-Construct a coherent dataset for analysing **conservation state of ancient books** as a function of environment, materials, storage location, and century of production — as required by the course project brief.
+Construct a coherent dataset for analysing **conservation state of ancient books** as a function of environment, materials, storage location, and century of production
 
 ## Sources and rationale
 
@@ -31,11 +31,11 @@ Join key: **`site_id`**.
 - **Condition**: `observed_condition_score` simulates expert survey scores for model validation; CRI is the primary decision index.
 - **Missing values**: Pipeline produces complete analytic table; artificial missingness can be injected for robustness exercises in Colab.
 
-## Recommended extensions (autonomy)
+## Possible extensions
 
-1. Register a free [Europeana API key](https://api.europeana.eu/) and fetch real manuscripts filtered by `TYPE:TEXT`.
-2. Download Coimbra supplementary CSV from the 2019 *Data in Brief* paper and replace simulated `S01` series.
-3. Enrich with [Open-Meteo Historical Weather API](https://open-meteo.com/) for outdoor climate normals by `latitude`/`longitude`.
+1. Connect to the Europeana API to replace simulated volume records with real manuscript metadata.
+2. Download the Coimbra supplementary CSV from Ferreira et al. (2019) and use it for site S01 instead of the modelled series.
+3. Add outdoor climate normals via the Open-Meteo Historical Weather API, matched by site coordinates.
 
 ## Regeneration
 
