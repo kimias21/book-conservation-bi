@@ -4,8 +4,7 @@
 **Author:** Kimia  
 **GitHub:** [kimias21/book-conservation-bi](https://github.com/kimias21/book-conservation-bi)  
 **Colab:** https://colab.research.google.com/github/kimias21/book-conservation-bi/blob/main/notebooks/conservation_analysis.ipynb  
-**Dashboard:** *[paste Streamlit URL after deployment]*  
-**Date:** May 2026
+ **Date:** May 2026
 
 ---
 
@@ -164,8 +163,7 @@ On the integrated sample (480 volumes):
 
 ### 5.3 Deployment
 
-Deployed on Streamlit Community Cloud (`app/streamlit_app.py`). Public URL: *[paste here — e.g. https://book-conservation-bi-xxxx.streamlit.app]*.
-
+Deployed on Streamlit Community Cloud (`app/streamlit_app.py`)
 ---
 
 ## 6. Critical self-assessment
@@ -206,4 +204,3 @@ The project translates a cultural-heritage BI problem into an integrated dataset
 
 ---
 
-*Export to PDF: Pandoc `pandoc final_report.md -o final_report.pdf` or print from VS Code / Word (max 10 pages).*
