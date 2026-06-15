@@ -163,7 +163,7 @@ On the integrated sample (480 volumes):
 
 ### 5.3 Deployment
 
-Deployed on Streamlit Community Cloud (`app/streamlit_app.py`).
+Deployed on Streamlit Community Cloud (`app/streamlit_app.py`): https://book-conservation-bi-xcdbvyjzkzp7rvyvkqecs2.streamlit.app
 ---
 
 ## 6. Critical self-assessment
