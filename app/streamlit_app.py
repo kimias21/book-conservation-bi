@@ -331,7 +331,8 @@ def main_dashboard(df: pd.DataFrame, timeseries: pd.DataFrame) -> None:
             "Adjust environmental parameters for a **reference volume** "
             "to estimate the impact on CRI (same material and age)."
         )
-        ref = df.iloc[0].copy()
+        ref_vol_id = st.selectbox("Select reference volume for simulation", df["volume_id"].tolist())
+        ref = df[df["volume_id"] == ref_vol_id].iloc[0].copy()
         baseline_cri = float(ref["conservation_risk_index"])
         c1, c2, c3 = st.columns(3)
         sim_temp = c1.slider("Temperature (°C)", 14.0, 28.0, float(ref["avg_temperature_c"]))
