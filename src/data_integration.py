@@ -139,7 +139,7 @@ def build_environmental_monitoring(sites_df: pd.DataFrame) -> pd.DataFrame:
 
     Coimbra (S01) bands informed by published historic-library monitoring
     (Ferreira et al., Data in Brief, 2019 — RH ~40–70%, T seasonal variation).
-    Other sites stochastically perturbed by climate_zone for integration demo.
+   Other sites use climate-zone baselines with added noise to reflect realistic seasonal variation.
     """
     rng = _rng()
     rows = []
@@ -264,7 +264,6 @@ def integrate(
     sites_df: pd.DataFrame,
     volumes_df: pd.DataFrame,
     env_agg: pd.DataFrame,
-    env_monthly: pd.DataFrame,
 ) -> pd.DataFrame:
     df = volumes_df.merge(sites_df, on="site_id", how="left")
     df = df.merge(env_agg, on="site_id", how="left", suffixes=("", "_env"))
@@ -290,7 +289,7 @@ def run(n_volumes: int = 480) -> pd.DataFrame:
     env_monthly.to_csv(ENV_MONITORING_CSV, index=False)
     volumes_df.to_csv(VOLUMES_CSV, index=False)
 
-    integrated = integrate(sites_df, volumes_df, env_agg, env_monthly)
+    integrated = integrate(sites_df, volumes_df, env_agg)
     integrated = add_conservation_columns(integrated)
     integrated.to_csv(INTEGRATED_CSV, index=False)
 
