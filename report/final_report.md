@@ -148,7 +148,9 @@ On the integrated sample (480 volumes):
 
 ### 5.1 Framework choice
 
-**Streamlit** — rapid Python deployment, shared codebase with Colab, free Community Cloud hosting. Alternatives (Dash, Power BI) offer richer enterprise integration but add stack complexity; acceptable trade-off for academic demo.
+I chose Streamlit for three concrete reasons. First, it shares the same Python environment as the data pipeline — the dashboard imports directly from `src/conservation_index.py` without any serialisation layer, which means the CRI formula stays in one place and any change propagates immediately to both the notebook and the UI. Second, `@st.cache_data` makes it straightforward to load the 480-volume dataset once and keep it in memory across filter interactions, which keeps the dashboard responsive without a separate backend. Third, free deployment on Streamlit Community Cloud requires no infrastructure configuration, which was a practical constraint given the project timeline.
+
+The main trade-off versus Dash is that Streamlit re-runs the entire script on every widget interaction, which would become a performance bottleneck at much larger dataset sizes. Power BI would offer more polished enterprise visuals and better role-based access control — relevant if this system were deployed in a real archival institution — but would require decoupling the CRI computation from Python entirely. For the scope of this project, the tighter integration with the analysis codebase outweighed those advantages.
 
 ### 5.2 Functionality
 
