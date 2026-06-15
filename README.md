@@ -19,7 +19,6 @@ Business Intelligence project on cultural heritage: integration of environmental
 |----------|-----|
 | Repository | https://github.com/kimias21/book-conservation-bi |
 | Colab notebook | https://colab.research.google.com/github/kimias21/book-conservation-bi/blob/main/notebooks/conservation_analysis.ipynb |
-| Streamlit dashboard | *add URL after deployment on [Streamlit Cloud](https://share.streamlit.io/)* |
 | Written report | `report/final_report.md` (export to PDF) |
 
 ---
