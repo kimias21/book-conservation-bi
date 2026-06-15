@@ -77,7 +77,7 @@ def event_stress(row: pd.Series) -> float:
     if row.get("flood_event", False):
         score += 0.5
     if row.get("restoration_recent", False):
-        score += 0.15
+    score = max(0.0, score - 0.10)
     if row.get("hvac_failure_event", False):
         score += 0.25
     return min(1.0, score)
